@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 
-// Container
-import MoviesContainer from './components/containers/MoviesContainer';
+// main Container
+import MainContainer from './components/containers/MainContainer';
 
 // Material UI
 import { Container } from '@material-ui/core';
@@ -13,7 +13,7 @@ function App() {
       <Container maxWidth={false} component="header" className="appHeader">
         <h1>React Movies App</h1>
       </Container>
-      <MoviesContainer />
+      <MainContainer />
     </Container>
   );
 }

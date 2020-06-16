@@ -6,15 +6,15 @@ import OnlyOneSelectForm from '../forms/OnlyOneSelectForm';
 import DisplayResult from './DisplayResult';
 
 const TvResult = (props) => {
-  const { tvSearchType, handleTVChange, content } = props;
+  const { result, handleChange } = props;
   return (
     <Container maxWidth={false}>
       <OnlyOneSelectForm
-        handleSearchTypeChange={handleTVChange}
+        handleSearchTypeChange={handleChange}
         options={['airing_today', 'on_the_air', 'popular', 'top_rated']}
-        defaultOption="popular"
+        defaultOption='popular'
       />
-      {content != null ? <DisplayResult content={content} /> : null}
+      {result != null ? <DisplayResult result={result} /> : null}
     </Container>
   );
 };
