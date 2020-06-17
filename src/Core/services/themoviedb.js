@@ -72,7 +72,7 @@ const formatMultiResult = (results) => {
 };
 
 // Search Content by type
-export const searchByType = async (searchQuery, searchType) => {
+export const searchByType = async (searchQuery, searchType, page) => {
   // "Build" the URL
   const url = `${BASE_URL}/search/${searchType}`;
 
@@ -83,7 +83,7 @@ export const searchByType = async (searchQuery, searchType) => {
         api_key: APP_KEY,
         query: searchQuery,
         include_adult: false,
-        page: 1,
+        page: page,
       },
     });
 
@@ -103,6 +103,16 @@ export const searchByType = async (searchQuery, searchType) => {
         default:
           break;
       }
+
+      if (content != null && content.length > 0) {
+        content = {
+          page: response.data.page,
+          totalPages: response.data.total_pages,
+          totalResults: response.data.total_results,
+          content
+        }
+      }
+
     }
     return content;
   } catch (error) {
@@ -112,7 +122,7 @@ export const searchByType = async (searchQuery, searchType) => {
 };
 
 // Search Content by type
-export const getList = async (searchType, searchList) => {
+export const getList = async (searchType, searchList, page) => {
   // "Build" the URL
   const url = `${BASE_URL}/${searchType}/${searchList}`;
 
@@ -121,7 +131,7 @@ export const getList = async (searchType, searchList) => {
     const response = await axios.get(url, {
       params: {
         api_key: APP_KEY,
-        page: 1,
+        page: page,
       },
     });
 
@@ -138,7 +148,17 @@ export const getList = async (searchType, searchList) => {
         default:
           break;
       }
+
+      if (content != null && content.length > 0) {
+        content = {
+          page: response.data.page,
+          totalPages: response.data.total_pages,
+          totalResults: response.data.total_results,
+          content
+        }
+      }
     }
+
     return content;
   } catch (error) {
     // Throw the error

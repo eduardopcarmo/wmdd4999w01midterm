@@ -18,6 +18,8 @@ const getStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(1),
     },
+    marginTop: '5ch',
+    marginBottom: '5ch',
   },
   select: {
     width: '25ch',
@@ -25,7 +27,7 @@ const getStyles = makeStyles((theme) => ({
 }));
 
 const OnlyOneSelectForm = (props) => {
-  const { handleSearchTypeChange, options, defaultOption } = props;
+  const { handleSearchTypeChange, options, defaultOption, selected } = props;
 
   const classes = getStyles();
   return (
@@ -36,6 +38,7 @@ const OnlyOneSelectForm = (props) => {
           label="Search Type"
           defaultValue={defaultOption}
           onChange={(event) => handleSearchTypeChange(event.target.value)}
+          value={selected}
         >
           {options.map((item, index) => {
             return (

@@ -11,27 +11,31 @@ import {
 const getStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    height: '45ch',
+    marginBottom: '16px'
+
+  },
+  cover: {
+    width: '30%',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundColor: 'lightgrey',
+    padding: '0',
   },
   details: {
     display: 'flex',
     flexDirection: 'column',
+    width: '70%',
+    alignSelf: 'center',
   },
-  content: {
-    flex: '1 0 auto',
+  title: {
+    textAlign: 'center'
   },
-  cover: {
-    width: 151,
-  },
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
+  subTitle: {
+    textAlign: 'center',
+    margin: '0'
+  }
 }));
 
 const DisplayContent = (props) => {
@@ -40,16 +44,14 @@ const DisplayContent = (props) => {
 
   return (
     <Card className={classes.root}>
-      <CardMedia image={posterUrl} title={title} className={classes.cover} />
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h3" variant="h3">
-            {title}
-          </Typography>
-          <p>{`Release Date: ${releaseDate} | Popularity: ${popularity}`}</p>
-          <p>{overview}</p>
-        </CardContent>
-      </div>
+      {posterUrl ? <CardMedia image={posterUrl} title={title} className={classes.cover} /> : <CardContent className={classes.cover}></CardContent>}
+      <CardContent className={classes.details}>
+        <Typography component="h3" variant="h5" className={classes.title}>
+          {title}
+        </Typography>
+        <p className={classes.subTitle}>{`Release Date: ${releaseDate} | Popularity: ${popularity}`}</p>
+        <p>{overview}</p>
+      </CardContent>
     </Card>
   );
 };

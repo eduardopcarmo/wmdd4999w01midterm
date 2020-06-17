@@ -20,6 +20,8 @@ const getStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(1),
     },
+    marginTop: '5ch',
+    marginBottom: '5ch',
   },
   textfield: {
     width: '50ch',
@@ -31,6 +33,8 @@ const getStyles = makeStyles((theme) => ({
 
 const SearchForm = (props) => {
   const {
+    searchQuery,
+    searchType,
     handleSearchInputChange,
     handleSearchTypeChange,
     fetchSearchContent,
@@ -47,6 +51,7 @@ const SearchForm = (props) => {
         variant="outlined"
         className={classes.textfield}
         onChange={(event) => handleSearchInputChange(event.target.value)}
+        value={searchQuery}
       />
       <FormControl variant="outlined" className={classes.select}>
         <InputLabel>Search Type</InputLabel>
@@ -54,6 +59,7 @@ const SearchForm = (props) => {
           label="Search Type"
           defaultValue="movie"
           onChange={(event) => handleSearchTypeChange(event.target.value)}
+          value={searchType}
         >
           <MenuItem value="movie">movie</MenuItem>
           <MenuItem value="multi">multi</MenuItem>
