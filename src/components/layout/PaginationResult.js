@@ -9,8 +9,11 @@ import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        margin: '5ch auto',
-        maxWidth: "400px"
+        marginTop: '5ch',
+        marginBottom: '5ch',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
 }));
 
